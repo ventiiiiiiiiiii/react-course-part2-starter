@@ -1,12 +1,14 @@
-import useAuth from "../Hooks/useAuth";
+import useAuthStore from "./store";
 const LoginStatus = () => {
-  const { username, dispatch } = useAuth();
-  if (username !== "logged out" && username !== "")
+  const { username, Login, Logout } = useAuthStore();
+  if (username !== "")
+    // const Logout = useAuthStore(s => s.Logout); --- > for specific rerendering if only a specific item changes
+
     return (
       <>
         <div>
           <span className="mx-2">{username}</span>
-          <a onClick={() => dispatch({ type: "LOGOUT" })} href="#">
+          <a onClick={() => Logout()} href="#">
             Logout
           </a>
         </div>
@@ -14,10 +16,7 @@ const LoginStatus = () => {
     );
   return (
     <div>
-      <a
-        onClick={() => dispatch({ type: "LOGIN", username: "BOOM SHAKALAKA" })}
-        href="#"
-      >
+      <a onClick={() => Login("boom")} href="#">
         Login
       </a>
     </div>

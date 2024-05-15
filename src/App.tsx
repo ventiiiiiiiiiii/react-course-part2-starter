@@ -1,5 +1,4 @@
 import "./App.css";
-import { AuthProvider } from "./state-management/auth";
 import Counter from "./state-management/counter/Counter";
 import HomePage from "./state-management/HomePage";
 import NavBar from "./state-management/NavBar";
@@ -8,11 +7,9 @@ function App() {
   return (
     <>
       <TasksProvider>
-        <AuthProvider>
-          <Counter />
-          <NavBar />
-          <HomePage />
-        </AuthProvider>
+        <Counter />
+        <NavBar />
+        <HomePage />
       </TasksProvider>
     </>
   );
